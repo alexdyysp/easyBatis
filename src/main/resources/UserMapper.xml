@@ -2,6 +2,6 @@
 
 <mapper nameSpace="com.Batis.mapper.UserMapper">
     <select id="getUserById" resultType="com.Batis.bean.User">
-        select * from user where id = ?
+        select * from empuser where id = ?
     </select>
 </mapper>
