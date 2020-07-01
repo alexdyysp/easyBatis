@@ -20,16 +20,18 @@ public class ExcutorInstance implements Excutor {
         try{
             pre = connection.prepareStatement(sql);
             pre.setString(1, parameter.toString());
+            System.out.println(pre);
             set = pre.executeQuery();
-            User u = new User();
-
+            System.out.println(set.next());
+            User user = new User();
             while(set.next()){
-                u.setId(set.getString(1));
-                u.setPassword(set.getString(2));
-                u.setPassword(set.getString(3));
+                System.out.println(1);
+                user.setId(set.getString(1));
+                user.setPassword(set.getString(2));
+                user.setUsername(set.getString(3));
             }
 
-            return (T) u;
+            return (T) user;
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
@@ -39,6 +41,9 @@ public class ExcutorInstance implements Excutor {
                 }
                 if(pre!=null){
                     pre.close();
+                }
+                if(connection!=null){
+                    connection.close();
                 }
 
             }catch (Exception exception){

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <mapper nameSpace="com.Batis.mapper.UserMapper">
     <select id="getUserById" resultType="com.Batis.bean.User">
         select * from empuser where id = ?
