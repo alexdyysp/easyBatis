@@ -3,10 +3,7 @@ package com.Batis.sqlSession;
 
 import com.Batis.bean.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ExcutorInstance implements Excutor {
 
@@ -17,15 +14,13 @@ public class ExcutorInstance implements Excutor {
         Connection connection = getConnection();
         ResultSet set = null;
         PreparedStatement pre = null;
+
         try{
             pre = connection.prepareStatement(sql);
             pre.setString(1, parameter.toString());
-            System.out.println(pre);
             set = pre.executeQuery();
-            System.out.println(set.next());
             User user = new User();
             while(set.next()){
-                System.out.println(1);
                 user.setId(set.getString(1));
                 user.setPassword(set.getString(2));
                 user.setUsername(set.getString(3));
@@ -50,6 +45,7 @@ public class ExcutorInstance implements Excutor {
                 exception.printStackTrace();
             }
         }
+
         return null;
     }
 

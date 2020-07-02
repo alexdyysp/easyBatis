@@ -7,7 +7,6 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import javax.management.RuntimeErrorException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -50,6 +49,7 @@ public class Configuration {
             Element i = (Element) item;
             String value = getValue(i);
             String name = i.attributeValue("name");
+            //System.out.println(name + " : " + value);
             if(name==null || value==null){
                 throw new RuntimeException("[database]: error in <property>");
             }
